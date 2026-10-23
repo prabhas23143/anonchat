@@ -1,18 +1,198 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AnonChat - Real-Time Omegle Clone</title>
-    <meta name="description" content="Production-ready random text chat Omegle clone with Socket.io backend for Render and static dark-mode frontend for Cloudflare Pages." />
-    <meta property="og:title" content="AnonChat - Real-Time Omegle Clone" />
-    <meta property="og:description" content="Production-ready random text chat Omegle clone with Socket.io backend for Render and static dark-mode frontend for Cloudflare Pages." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>AnonChat - Free Anonymous Random Text Chat</title>
+  <meta name="description" content="Talk to strangers anonymously. Fast, free, random text-only chat with zero registration required." />
+  <meta name="description" content="Talk to strangers instantly with our free random text chat online. No registration required. Connect with people worldwide on the best Omegle alternative today.">
+<meta name="keywords" content="random chat, talk to strangers, online text chat, anonymous chat, omegle alternative, free chat rooms, chat with strangers, live text chat">
+<meta name="robots" content="index, follow">
 
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Random Chat Online - Talk to Strangers | Omegle Alternative">
+<meta property="og:description" content="Talk to strangers instantly with our free random text chat online. No registration required. Connect with people worldwide on the best Omegle alternative today.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Random Chat Online - Talk to Strangers | Omegle Alternative">
+<meta name="twitter:description" content="Talk to strangers instantly with our free random text chat online. No registration required. Connect with people worldwide on the best Omegle alternative today.">
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Socket.io client from official CDN for standalone Cloudflare Pages deployment -->
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
+  <!-- ========================================================================= -->
+  <!-- AD NETWORK PLACEHOLDER (Adsterra / PropellerAds / PopCash / Monetag)       -->
+  <!-- ========================================================================= -->
+  <!-- 
+    Instructions for Ad Networks:
+    1. For Adsterra Social Bar or PropellerAds OnClick/Push:
+       Paste your global script tag directly inside the <head> below:
+       <script type="text/javascript" src="//pl12345678.highperformancegate.com/xx/yy/zz.js"></script>
+    2. For Banner Ads (728x90 Leaderboard or 320x50 Mobile Banner):
+       Place the iframe/script code inside the .ad-banner-slot divs below.
+  -->
+</head>
+<body>
+  <div class="app-wrapper">
+    <!-- Top Ad Network Banner Container -->
+    <header class="app-header">
+      <div class="header-main">
+        <div class="brand">
+          <div class="brand-logo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">Anon<span class="accent-text">Chat</span></span>
+            <span class="brand-tag">Pingora.Space</span>
+          </div>
+        </div>
+
+        <div class="header-meta">
+          <div class="meta-item online-pill" id="online-counter" title="Total users connected">
+            <span class="status-pulse-dot online"></span>
+            <span id="online-text">Connecting...</span>
+          </div>
+          
+          <button id="sound-toggle-btn" class="icon-action-btn" title="Toggle audio chime" aria-label="Toggle Sound">
+            <svg id="sound-icon-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+            <svg id="sound-icon-off" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+              <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path>
+              <path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Header Ad Slot (Configured for Adsterra 728x90 / 320x50 or PropellerAds Banner) -->
+      <!-- <div class="ad-banner-slot" id="header-ad-container"> -->
+        <!-- REPLACE THIS WITH YOUR ADSTERRA / PROPELLERADS SCRIPT -->
+        <!-- Example Adsterra Banner:
+        <script type="text/javascript">
+          atOptions = {
+            'key' : 'YOUR_ADSTERRA_KEY_HERE',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.topcreativeformat.com/YOUR_KEY/invoke.js"></script>
+        -->
+        <!-- <div class="ad-placeholder-label">
+          <span>SPONSORED AD SPACE (728x90 / 320x50 Adsterra &bull; PropellerAds)</span>
+        </div>
+      </div> -->
+    </header>
+
+    <!-- Main Chat Workspace -->
+    <main class="chat-viewport">
+      <!-- Status Bar -->
+      <div class="chat-status-bar" id="chat-status-bar">
+        <div class="status-indicator">
+          <span class="status-indicator-dot idle" id="status-indicator-dot"></span>
+          <span class="status-text" id="status-text">Disconnected. Press "Start" to meet someone new!</span>
+        </div>
+        <div class="server-config-hint" id="server-config-indicator" title="Connected backend">
+          <span class="server-badge" id="backend-label">Render: Connecting...</span>
+        </div>
+      </div>
+
+      <!-- Message History Container -->
+      <div class="chat-messages" id="chat-messages">
+        <!-- Welcome intro card -->
+        <div class="system-card" id="welcome-card">
+          <div class="system-card-icon">👋</div>
+          <h3>Welcome to AnonChat!</h3>
+          <p>
+            You are talking to a random stranger. Chats are completely anonymous, private, and text-only.
+            No registration or credit card needed.
+          </p>
+          <ul class="guidelines-list">
+            <li>Be respectful. Hate speech and harassment will get you reported.</li>
+            <li>Press <strong>Esc</strong> on keyboard to quickly skip to the next stranger.</li>
+            <li>Press <strong>Enter</strong> to send your message.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Typing Indicator -->
+      <div class="typing-indicator-bar hidden" id="typing-indicator">
+        <div class="typing-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span class="typing-label">Stranger is typing...</span>
+      </div>
+    </main>
+
+    <!-- Bottom Control Bar -->
+    <footer class="chat-controls">
+      <div class="control-actions-row">
+        <!-- Primary Action Toggle: Start / Find Stranger -->
+        <button id="btn-start" class="btn btn-primary" title="Find a random partner">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span class="btn-text">Start Chat</span>
+        </button>
+
+        <!-- Skip / Next Button (Esc shortcut) -->
+        <button id="btn-next" class="btn btn-secondary hidden" title="Disconnect and find someone else (Esc)" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 4 15 12 5 20 5 4"></polygon>
+            <line x1="19" y1="5" x2="19" y2="19"></line>
+          </svg>
+          <span class="btn-text">Next <kbd class="kbd-hint">Esc</kbd></span>
+        </button>
+
+        <!-- Stop / Disconnect Button -->
+        <button id="btn-stop" class="btn btn-danger hidden" title="End this conversation" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="6" y="6" width="12" height="12"></rect>
+          </svg>
+          <span class="btn-text">Stop</span>
+        </button>
+      </div>
+
+      <!-- Message Input Form -->
+      <form id="chat-form" class="chat-input-form" autocomplete="off">
+        <input
+          type="text"
+          id="message-input"
+          class="chat-input"
+          placeholder="Type your message here... (Press Enter to send)"
+          maxlength="2000"
+          disabled
+          autocomplete="off"
+        />
+        <button type="submit" id="btn-send" class="btn btn-send" disabled title="Send message">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </footer>
+
+    <!-- Bottom Ad Banner (Mobile friendly 300x250 or 320x50 Adsterra / PropellerAds) -->
+    <!-- <div class="ad-footer-slot"> -->
+      <!-- PASTE YOUR SECOND AD CODE HERE (Optional footer banner) -->
+      <!-- <div class="ad-placeholder-label mini">
+        <span>ADVERTISEMENT (PropellerAds / Adsterra / Popunder script placeholder)</span>
+      </div>
+    </div> -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
