@@ -1,0 +1,6 @@
+{
+  "name": "AnonChat - Real-Time Omegle Clone",
+  "description": "Production-ready random text chat Omegle clone with Socket.io backend for Render and static dark-mode frontend for Cloudflare Pages.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
